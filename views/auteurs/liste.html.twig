@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+{% block titre %}Page affichant les auteurs{% endblock %}
+
+{% block contenu %}
+    <table class="table text-center monTableau" id="tableauLivres">
+        <thead> 
+        <tr class="table-dark">
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Nombre de livres</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for auteur in auteurs %}
+            <tr>
+                <td class="align-middle"><a href="/auteurs/{{auteur._id}}"> {{auteur.prenom}}</a></td>
+                <td class="align-middle">{{auteur.nom}}</td>
+                <td class="align-middle">{{auteur.livres|length}}</td>
+                <td class="align-middle"><a href="/auteurs/modification/{{auteur._id}}" class="btn btn-warning" >Modifier</a></td>
+            <td class="align-middle">
+              <form method="POST" action="/auteurs/delete/{{auteur._id}}" onSubmit= "return confirm('Voulez-vous vraiement supprimer cet auteur ?');">
+                <button class="btn btn-danger" type="submit">Supprimer</button>
+              </form>
+            </td>
+            </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn btn-success w-100" onClick="afficherFormulaire()">Ajouter</button>
+    <form id="ajoutForm" class="d-none" method= "POST" action="" > <!--"d-none" de bootstrap permet de cacher le formulaire | "action" vide car meme route -->
+        <fieldset>
+          <legend>Création d'un auteur</legend>
+          <div class="form-group">
+              <label for="prenom">Prénom</label>
+               <input type="text" class="form-control" id="prenom" name="prenom"> <!-- id utilisé par JS client et name par JS serveur-->
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+             <input type="text" class="form-control" id="nom" name="nom"> <!-- id utilisé par JS client et name par JS serveur-->
+        </div>
+          <div class="form-group">
+              <label for="age">age</label>
+              <input type="number" class="form-control" id="age" name="age">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="sexe" name="sexe">
+            <label class="form-check-label" for="exampleCheck1">Homme</label>
+          </div>
+          
+          <button class="btn btn-info" type="submit">Valider</button>
+        </fieldset>
+    
+    
+      </form>
+      <script src="/javascript/ajoutLivre.js"></script>
+
+
+{% endblock %}

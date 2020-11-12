@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block section %}accueil{% endblock %}
+{% block titre %} Mes BD.net - Collection de Bandes Déssinée{% endblock %}
+
+{% block contenu %}
+<div class="jumbotron ">
+    <h1 class="display-3">Bienvenue</h1>
+    <p class="lead">Ce site est réalisé avec Node.JS, Express.JS et MongoDB</p>
+    <hr class="my-4">
+    <p>Je vous laisse découvrir les livres et les auteurs.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/livres" role="button">Les Livres</a>
+      <a class="btn btn-primary btn-lg" href="/auteurs" role="button">Les auteurs</a>
+    </p>
+  </div>
+
+{% endblock %}
+
