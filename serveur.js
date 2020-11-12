@@ -36,5 +36,5 @@ server.use("/auteurs", routerAuteur);// mettre les routes avant le global
 
 server.use("/", routerGlobal);// pour les routes commencant par / il ira chercher dans notre fichier qui s appelle globale.routeur.js 
 
-server.listen(process.env.PORT || 8000); // sur quel port cela ecoute
+server.listen(process.env.PORT || 8080, '127.0.0.1'); // sur quel port cela ecoute
 
